@@ -1,0 +1,622 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hidroponik Botol Bekas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: satu kolom bacaan 760px, navigasi bagian menempel di atas, setiap bagian punya bagian interaktif sendiri (kalkulator, centang, kuis). */
+:root {
+  --bg: #F1F4F2;
+  --surface: #FFFFFF;
+  --ink: #16201C;
+  --muted: #55655E;
+  --line: #D3DCD7;
+  --leaf: #2C6B4D;
+  --leaf-soft: #DDEBE3;
+  --amaranth: #A8205A;
+  --amaranth-soft: #F7DDE8;
+  --basalt: #3C4549;
+  --solution: #BFE0D2;
+  --wick: #B9A98C;
+  --on-accent: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101513; --surface: #182019; --ink: #E6EEE9; --muted: #9DACA4; --line: #2B3730;
+    --leaf: #78C6A0; --leaf-soft: #1F3328; --amaranth: #F27AA6; --amaranth-soft: #3A1B29;
+    --basalt: #8A969B; --solution: #28463B; --wick: #A39477; --on-accent: #1B0A12;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101513; --surface: #182019; --ink: #E6EEE9; --muted: #9DACA4; --line: #2B3730;
+  --leaf: #78C6A0; --leaf-soft: #1F3328; --amaranth: #F27AA6; --amaranth-soft: #3A1B29;
+  --basalt: #8A969B; --solution: #28463B; --wick: #A39477; --on-accent: #1B0A12;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; padding-inline: 16px; padding-block: 0 56px; }
+.wrap { max-width: 760px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0 0 12px; }
+a { color: var(--leaf); }
+sup.r { font-family: var(--font-data); font-size: 0.68em; }
+sup.r a { text-decoration: none; color: var(--amaranth); }
+:focus-visible { outline: 3px solid var(--amaranth); outline-offset: 2px; }
+
+header.top { padding-block: 40px 20px; }
+.kicker { font-family: var(--font-data); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amaranth); margin-bottom: 10px; }
+h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; }
+.sub { color: var(--muted); font-size: 1.1rem; margin-top: 12px; max-width: 56ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+.facts li { font-family: var(--font-data); font-size: 13px; border: 1px solid var(--line); background: var(--surface); padding: 4px 10px; border-radius: 6px; }
+
+nav.sections { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-inline: -16px; padding-inline: 16px; }
+nav.sections .row { max-width: 760px; margin-inline: auto; display: flex; gap: 4px; overflow-x: auto; padding-block: 8px; scrollbar-width: thin; }
+nav.sections a { white-space: nowrap; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 15px; padding: 6px 12px; border-radius: 6px; }
+nav.sections a:hover { background: var(--leaf-soft); }
+
+section { padding-block: 40px 8px; scroll-margin-top: 56px; }
+h2 { font-size: clamp(1.6rem, 4.6vw, 2.1rem); font-weight: 700; margin-bottom: 14px; }
+h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.lead { font-size: 1.08rem; }
+
+.callout { background: var(--amaranth-soft); border-radius: 8px; padding: 14px 16px; margin-block: 16px; }
+.callout strong { color: var(--amaranth); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-block: 16px; }
+
+figure.diagram { margin: 20px 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+figure.diagram svg { width: 100%; height: auto; display: block; }
+figure.diagram figcaption { color: var(--muted); font-size: 14px; padding: 8px 4px 0; }
+.dsvg text { font-family: var(--font-body); font-size: 14px; fill: var(--ink); }
+.dsvg .line { stroke: var(--muted); stroke-width: 1; fill: none; }
+
+details { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); margin-block: 10px; }
+summary { cursor: pointer; font-weight: 700; padding: 12px 16px; list-style-position: inside; }
+details .body { padding: 0 16px 14px; }
+details .body p:last-child { margin-bottom: 0; }
+
+.calc { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; }
+.field input { font: inherit; font-family: var(--font-data); background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; min-width: 0; }
+.out { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 18px; padding: 0; list-style: none; }
+.out li { background: var(--leaf-soft); border-radius: 8px; padding: 10px 14px; }
+.out .v { font-family: var(--font-data); font-size: 1.5rem; font-weight: 500; display: block; font-variant-numeric: tabular-nums; }
+.out .l { font-size: 14px; color: var(--muted); }
+
+.progress { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 8px 0 4px; }
+.progress > span { display: block; height: 100%; background: var(--leaf); width: 0; transition: width 0.25s; }
+.pcount { font-family: var(--font-data); font-size: 13px; color: var(--muted); }
+.phase { margin-top: 24px; }
+.phase h3 { display: flex; gap: 10px; align-items: baseline; }
+.phase h3 .tag { font-family: var(--font-data); font-size: 12px; font-weight: 500; color: var(--amaranth); letter-spacing: 0.06em; text-transform: uppercase; }
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 0; }
+.steps input[type=checkbox] { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--leaf); }
+.steps label { cursor: pointer; display: block; min-width: 0; }
+.steps label::before { content: counter(step) ". "; font-family: var(--font-data); font-weight: 500; color: var(--muted); }
+.steps input:checked + label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.steps .why { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; text-decoration: none; }
+
+.checks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 20px; }
+.checks li { display: flex; gap: 10px; align-items: flex-start; padding-block: 5px; }
+.checks input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--leaf); flex: none; }
+
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.num, td.mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.timeline { list-style: none; padding: 0; margin: 0; border-left: 3px solid var(--leaf); }
+.timeline li { padding: 0 0 18px 18px; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -9px; top: 7px; width: 15px; height: 15px; border-radius: 50%; background: var(--surface); border: 3px solid var(--amaranth); }
+.timeline .day { font-family: var(--font-data); font-weight: 500; color: var(--amaranth); font-size: 14px; display: block; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.chip { font: inherit; font-size: 15px; font-weight: 600; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--leaf); border-color: var(--leaf); color: var(--bg); }
+.answer h3 { color: var(--amaranth); }
+.answer ul { margin: 6px 0 0; padding-left: 20px; }
+
+.btn { font: inherit; font-weight: 700; background: var(--amaranth); color: var(--on-accent); border: 0; border-radius: 8px; padding: 10px 18px; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.formrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; align-items: end; }
+.field select, .field textarea { font: inherit; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; min-width: 0; }
+.logout { font-family: var(--font-data); font-size: 13px; background: var(--bg); border: 1px dashed var(--line); border-radius: 6px; padding: 10px; white-space: pre-wrap; overflow-x: auto; margin-top: 12px; }
+
+.q { margin-block: 18px; }
+.q p.qt { font-weight: 700; margin-bottom: 8px; }
+.opts { display: grid; gap: 8px; }
+.opt { text-align: left; font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.opt:disabled { cursor: default; }
+.opt.right { border-color: var(--leaf); background: var(--leaf-soft); }
+.opt.wrong { border-color: var(--amaranth); background: var(--amaranth-soft); }
+.fb { font-size: 15px; color: var(--muted); margin-top: 8px; }
+.score { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
+
+ol.refs { padding-left: 0; list-style: none; margin: 0; }
+ol.refs li { display: grid; grid-template-columns: 38px 1fr; gap: 6px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; scroll-margin-top: 64px; }
+ol.refs .n { font-family: var(--font-data); color: var(--amaranth); }
+ol.refs .t { display: inline-block; font-family: var(--font-data); font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; margin-left: 6px; color: var(--muted); }
+ol.refs a { overflow-wrap: anywhere; }
+footer { color: var(--muted); font-size: 14px; padding-top: 28px; }
+@media (prefers-reduced-motion: reduce) { .progress > span { transition: none; } }
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="kicker">Panduan workshop · Peer group IAAS</div>
+  <h1>Hidroponik Botol Bekas</h1>
+  <p class="sub">Menanam bayam dengan sistem sumbu di atas media rockwool, dari botol plastik yang biasanya dibuang. Setiap bagian ada rujukannya, dan setiap bagian bisa kamu kerjakan langsung di halaman ini.</p>
+  <ul class="facts">
+    <li>Sistem sumbu (wick)</li>
+    <li>Media rockwool</li>
+    <li>Bibit bayam</li>
+    <li>3 botol rockwool</li>
+    <li>Panen sekitar 25–35 hari setelah semai</li>
+  </ul>
+</header>
+</div>
+
+<nav class="sections" aria-label="Bagian panduan">
+  <div class="row">
+    <a href="#dasar">Dasar</a>
+    <a href="#bahan">Alat dan bahan</a>
+    <a href="#langkah">Langkah</a>
+    <a href="#rawat">Perawatan</a>
+    <a href="#masalah">Masalah</a>
+    <a href="#catat">Pengamatan</a>
+    <a href="#kuis">Kuis</a>
+    <a href="#pustaka">Pustaka</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="dasar">
+  <h2>Cara kerja satu botol</h2>
+  <p class="lead">Sistem sumbu tidak memakai listrik dan tidak memakai pompa. Kain flanel menyerap larutan nutrisi dari bagian bawah botol lalu menaikkannya ke rockwool lewat daya kapiler, jadi akar bayam selalu lembap tanpa tergenang.<sup class="r"><a href="#r3">[3]</a><a href="#r17">[17]</a></sup></p>
+
+  <figure class="diagram">
+    <svg class="dsvg" viewBox="0 0 520 410" role="img" aria-labelledby="dt dd">
+      <title id="dt">Penampang satu botol hidroponik sumbu</title>
+      <desc id="dd">Botol dipotong dua. Bagian atas dibalik dan masuk ke bagian bawah. Rockwool berisi bibit duduk di leher botol. Sumbu flanel melewati tutup berlubang dan masuk ke larutan nutrisi.</desc>
+      <!-- reservoir -->
+      <rect x="130" y="190" width="200" height="175" rx="14" fill="none" stroke="var(--basalt)" stroke-width="2.5"/>
+      <rect x="132" y="296" width="196" height="67" rx="12" fill="var(--solution)"/>
+      <rect x="126" y="186" width="208" height="183" rx="16" fill="none" stroke="var(--amaranth)" stroke-width="1.5" stroke-dasharray="6 5"/>
+      <!-- inverted top -->
+      <polygon points="130,190 330,190 250,264 210,264" fill="var(--surface)" stroke="var(--basalt)" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="216" y="264" width="28" height="9" rx="2" fill="var(--basalt)"/>
+      <!-- wick -->
+      <path d="M230 232 L230 346 Q230 356 240 356" fill="none" stroke="var(--wick)" stroke-width="6" stroke-linecap="round"/>
+      <!-- rockwool -->
+      <rect x="205" y="206" width="50" height="46" rx="3" fill="var(--leaf-soft)" stroke="var(--leaf)" stroke-width="2"/>
+      <g stroke="var(--leaf)" stroke-width="1" opacity="0.6"><line x1="213" y1="214" x2="247" y2="244"/><line x1="213" y1="230" x2="233" y2="246"/><line x1="228" y1="210" x2="250" y2="228"/></g>
+      <!-- seedling -->
+      <path d="M230 206 L230 160" stroke="var(--leaf)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="214" cy="158" rx="15" ry="8" transform="rotate(-25 214 158)" fill="var(--amaranth)"/>
+      <ellipse cx="247" cy="152" rx="15" ry="8" transform="rotate(25 247 152)" fill="var(--amaranth)"/>
+      <!-- leaders right -->
+      <line class="line" x1="258" y1="150" x2="368" y2="138"/>
+      <line class="line" x1="255" y1="226" x2="368" y2="216"/>
+      <line class="line" x1="244" y1="268" x2="368" y2="268"/>
+      <line class="line" x1="330" y1="283" x2="368" y2="296"/>
+      <line class="line" x1="328" y1="330" x2="368" y2="352"/>
+      <text x="374" y="134">Bibit bayam</text>
+      <text x="374" y="212">Kubus rockwool</text>
+      <text x="374" y="264">Tutup berlubang</text>
+      <text x="374" y="292">Celah udara</text>
+      <text x="374" y="357">Larutan nutrisi</text>
+      <!-- leaders left -->
+      <line class="line" x1="112" y1="318" x2="228" y2="330"/>
+      <line class="line" x1="112" y1="372" x2="128" y2="360"/>
+      <text x="8" y="316">Sumbu flanel</text>
+      <text x="8" y="388">Pembungkus gelap</text>
+    </svg>
+    <figcaption>Muka air berhenti di bawah tutup, jadi hanya sumbu yang basah. Celah udara menjaga akar tidak terendam.<sup class="r"><a href="#r11">[11]</a></sup> Pembungkus gelap pada bagian bawah botol menghalangi cahaya supaya lumut tidak tumbuh di larutan.<sup class="r"><a href="#r12">[12]</a></sup></figcaption>
+  </figure>
+
+  <div class="callout">
+    <strong>Soal jenis bayam.</strong> Bayam yang dijual dan dimakan sehari-hari di Indonesia adalah <em>Amaranthus</em> (bayam hijau atau bayam merah). Tanaman ini suka hangat, tumbuh baik pada 22–30 °C, dan benihnya butuh minimal sekitar 15–17 °C untuk berkecambah.<sup class="r"><a href="#r10">[10]</a></sup> Bayam impor <em>Spinacia oleracea</em> adalah tanaman sejuk dan jauh lebih rewel di dataran rendah tropis. Panduan ini ditulis untuk <em>Amaranthus</em>. Kalau benihmu Spinacia, ruangan teduh dan dingin sangat membantu.
+  </div>
+
+  <details>
+    <summary>Landasan ilmiah: kenapa sumbu dan rockwool?</summary>
+    <div class="body">
+      <p><strong>Sumbu itu sederhana, dengan batasnya.</strong> Beberapa penelitian di Indonesia memakai sumbu flanel dengan rockwool untuk bayam merah, sawi, selada, dan pakcoy, dan semuanya melaporkan tanaman tumbuh dengan nutrisi AB Mix.<sup class="r"><a href="#r3">[3]</a><a href="#r4">[4]</a><a href="#r5">[5]</a><a href="#r6">[6]</a></sup> Satu penelitian membandingkan sumbu vertikal, tetes, dan kultur air dalam pada bayam. Hasil bayam sistem tetes lebih tinggi daripada sistem sumbu.<sup class="r"><a href="#r9">[9]</a></sup> Kajian lain juga menyebut NFT lebih unggul daripada sumbu untuk pertumbuhan dan hasil.<sup class="r"><a href="#r19">[19]</a></sup> Sebuah kajian pustaka juga mengulas sumbu dan NFT sebagai teknologi pertanian kota.<sup class="r"><a href="#r16">[16]</a></sup> Jadi harapkan hasil yang cukup untuk belajar dan konsumsi rumah tangga, bukan hasil sekelas kebun komersial.</p>
+      <p><strong>Rockwool.</strong> Bahan ini dibuat dari batuan basalt yang dilelehkan lalu dipintal menjadi serat. Susunan seratnya menentukan seberapa banyak air yang ditahan dan seberapa banyak udara yang tersisa. Rockwool steril dan inert, sehingga cocok untuk menyemai.<sup class="r"><a href="#r13">[13]</a></sup> Pada selada sistem sumbu, kombinasi rockwool dengan 5 ml/L AB Mix memberi hasil tertinggi dibanding serbuk gergaji dan busa.<sup class="r"><a href="#r6">[6]</a></sup> Pada sawi, rockwool dengan 5 ml/L juga memberi panen paling menguntungkan dibanding cocopeat dan biochar sekam.<sup class="r"><a href="#r5">[5]</a></sup></p>
+      <p><strong>Botol bekas.</strong> Modul KKN IPB dan sebuah prosiding menunjukkan botol plastik bekas 600–1500 ml dapat dipakai sebagai wadah sistem sumbu.<sup class="r"><a href="#r8">[8]</a><a href="#r17">[17]</a></sup></p>
+    </div>
+  </details>
+
+  <h3 style="margin-top:24px">Usulan alur workshop (sekitar 2 jam)</h3>
+  <div class="tablewrap panel" style="padding:8px 12px">
+    <table>
+      <thead><tr><th>Menit</th><th>Kegiatan</th><th>Bagian</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0–15</td><td>Pengantar: apa itu hidroponik sumbu, kenapa botol bekas</td><td>Dasar</td></tr>
+        <tr><td class="mono">15–25</td><td>Bagi alat dan bahan, hitung kebutuhan</td><td>Alat dan bahan</td></tr>
+        <tr><td class="mono">25–70</td><td>Membuat wadah dan menyemai benih di rockwool</td><td>Langkah, fase A dan B</td></tr>
+        <tr><td class="mono">70–95</td><td>Demo pindah tanam memakai bibit yang disemai lebih dulu, isi nutrisi</td><td>Langkah, fase C</td></tr>
+        <tr><td class="mono">95–110</td><td>Jadwal perawatan, kuis, lembar pengamatan</td><td>Perawatan, Kuis</td></tr>
+        <tr><td class="mono">110–120</td><td>Foto, tanya jawab, tugas pengamatan mingguan</td><td>Pengamatan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted);font-size:15px">Ini usulan penyusun, bukan hasil penelitian. Semai butuh beberapa hari, jadi siapkan satu nampan kubus yang sudah tumbuh sebelum workshop untuk dipakai pada demo pindah tanam.</p>
+</section>
+
+<section id="bahan">
+  <h2>Alat dan bahan</h2>
+  <p>Isi angka di bawah sesuai rencanamu. Hasilnya langsung dihitung ulang. Nilai awal mengikuti rencana workshop: 3 botol rockwool dan 20 peserta.</p>
+
+  <div class="panel">
+    <div class="calc">
+      <div class="field"><label for="c-botol">Botol rockwool</label><input id="c-botol" type="number" min="1" value="3"></div>
+      <div class="field"><label for="c-kubus">Kubus tanam per botol</label><input id="c-kubus" type="number" min="1" value="2"></div>
+      <div class="field"><label for="c-cad">Cadangan semai (%)</label><input id="c-cad" type="number" min="0" value="100"></div>
+      <div class="field"><label for="c-peserta">Peserta</label><input id="c-peserta" type="number" min="1" value="20"></div>
+      <div class="field"><label for="c-benih">Benih per kubus</label><input id="c-benih" type="number" min="1" value="4"></div>
+      <div class="field"><label for="c-vol">Larutan per botol (L)</label><input id="c-vol" type="number" min="0.1" step="0.1" value="1"></div>
+      <div class="field"><label for="c-dosis">Dosis (ml per L larutan)</label><input id="c-dosis" type="number" min="0" step="0.5" value="5"></div>
+      <div class="field"><label for="c-sumbu">Panjang sumbu (cm)</label><input id="c-sumbu" type="number" min="5" value="25"></div>
+    </div>
+    <ul class="out" aria-live="polite">
+      <li><span class="v" id="o-semai">0</span><span class="l">kubus rockwool untuk semai</span></li>
+      <li><span class="v" id="o-benih">0</span><span class="l">butir benih bayam</span></li>
+      <li><span class="v" id="o-larutan">0</span><span class="l">liter larutan nutrisi</span></li>
+      <li><span class="v" id="o-ab">0</span><span class="l">ml larutan A dan ml larutan B (masing-masing)</span></li>
+      <li><span class="v" id="o-flanel">0</span><span class="l">cm kain flanel, lebar 2 cm</span></li>
+      <li><span class="v" id="o-botol">0</span><span class="l">botol plastik 1,5 L</span></li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted);margin:14px 0 0">Kubus semai dihitung dari kubus tanam ditambah cadangan, dan tidak pernah kurang dari jumlah peserta supaya tiap orang menyemai satu kubus sendiri. Benih per kubus mengikuti penelitian yang membandingkan 5, 7, dan 9 benih per lubang: rockwool dengan 5 benih memberi bobot panen terbaik pada bayam.<sup class="r"><a href="#r7">[7]</a></sup> Dosis 5 ml/L adalah angka yang diuji pada sawi dan selada.<sup class="r"><a href="#r5">[5]</a><a href="#r6">[6]</a></sup> Baca label AB Mix yang kamu beli, lalu ikuti petunjuknya jika berbeda.</p>
+  </div>
+
+  <h3 style="margin-top:24px">Daftar siapkan</h3>
+  <div class="panel">
+    <ul class="checks" id="kit"></ul>
+    <div class="progress"><span id="kit-bar"></span></div>
+    <div class="pcount" id="kit-count"></div>
+  </div>
+  <details>
+    <summary>Landasan ilmiah: rockwool perlu direndam dulu</summary>
+    <div class="body">
+      <p>Rockwool baru dapat membuat air di sekitarnya bersifat basa, padahal akar bayam menyukai kisaran sedikit asam. Para praktisi merekomendasikan merendamnya dalam air yang pH-nya sudah diturunkan ke sekitar 5,5–6,0 sebelum dipakai, lalu ditiriskan.<sup class="r"><a href="#r14">[14]</a></sup> Alasan pH ini ada di bagian Perawatan. Sumber ini panduan praktisi, bukan jurnal, jadi pH air rendaman sebaiknya kamu ukur sendiri dengan kertas pH atau pH meter.</p>
+    </div>
+  </details>
+</section>
+
+<section id="langkah">
+  <h2>Langkah kerja</h2>
+  <p>Centang setiap langkah yang selesai. Centangmu tersimpan di browser ini, jadi aman kalau halaman tertutup.</p>
+  <div class="progress"><span id="steps-bar"></span></div>
+  <div class="pcount" id="steps-count"></div>
+
+  <div class="phase">
+    <h3><span class="tag">Fase A</span> Membuat wadah</h3>
+    <ol class="steps" id="phaseA"></ol>
+  </div>
+  <div class="phase">
+    <h3><span class="tag">Fase B</span> Menyemai di rockwool</h3>
+    <ol class="steps" id="phaseB"></ol>
+  </div>
+  <div class="phase">
+    <h3><span class="tag">Fase C</span> Pindah tanam dan isi nutrisi</h3>
+    <ol class="steps" id="phaseC"></ol>
+  </div>
+
+  <div class="callout"><strong>Keselamatan.</strong> Memotong botol dan melubangi tutup dikerjakan fasilitator atau peserta yang sudah dibimbing. Pakai gunting yang tajam dan alas potong. Larutan AB Mix tidak untuk diminum. Cuci tangan setelah menyentuh larutan dan sebelum makan.</div>
+
+  <details>
+    <summary>Landasan ilmiah: rancangan botol, lumut, dan jumlah benih</summary>
+    <div class="body">
+      <p><strong>Rancangan botol.</strong> Pola potong botol, tutup berlubang, dan sumbu yang menembus tutup mengikuti rancangan Bottle Growing System dari Departemen Energi AS. Sumbu perlu menyentuh dasar tandon dan masuk ke dalam media, tidak menempel di sisi botol, dan ada ruang udara di wadah.<sup class="r"><a href="#r11">[11]</a></sup> Lebar sumbu flanel sekitar 2 cm dipakai pada panduan populer.<sup class="r"><a href="#r18">[18]</a></sup></p>
+      <p><strong>Lumut.</strong> Panduan Wisconsin Fast Plants menyarankan membungkus tandon dengan plastik hitam agar cahaya tidak mencapai air, karena lumut tumbuh di larutan yang terkena cahaya.<sup class="r"><a href="#r12">[12]</a></sup></p>
+      <p><strong>Jumlah benih dan penjarangan.</strong> Benih bayam sangat kecil. Beberapa benih per kubus menaikkan peluang tumbuh, lalu tanaman yang lemah dipilih dan dibuang.<sup class="r"><a href="#r7">[7]</a><a href="#r14">[14]</a></sup> Penjarangan pada bayam dimulai sekitar 2–3 minggu setelah berkecambah, dan tanam terlalu rapat meningkatkan risiko rebah kecambah.<sup class="r"><a href="#r10">[10]</a></sup></p>
+      <p><strong>Waktu pindah.</strong> Modul KKN IPB memindahkan bibit ke botol bersumbu pada hari ke-12 setelah semai. Itu untuk sayuran dalam modul mereka, jadi anggap sebagai contoh, dan pindahkan bibitmu saat daun sejatinya sudah 2–3 helai.<sup class="r"><a href="#r8">[8]</a><a href="#r18">[18]</a></sup></p>
+    </div>
+  </details>
+</section>
+
+<section id="rawat">
+  <h2>Perawatan sampai panen</h2>
+
+  <h3>Angka target</h3>
+  <div class="panel tablewrap" style="padding:8px 12px">
+    <table>
+      <thead><tr><th>Hal</th><th>Target</th><th>Rujukan</th></tr></thead>
+      <tbody>
+        <tr><td>pH larutan</td><td class="mono">5,5–6,5</td><td>Rentang lazim hidroponik daun. Pada bayam Spinacia, pH 4,0 membuat tanaman kerdil dan akar tidak berkembang.<sup class="r"><a href="#r2">[2]</a></sup> Penelitian bayam di Indonesia menyebut anjuran pH 5–6.<sup class="r"><a href="#r1">[1]</a></sup></td></tr>
+        <tr><td>Kepekatan</td><td class="mono">±1000–1100 ppm</td><td>Bayam merah sistem sumbu: 1000 ppm pada satu penelitian, 1050–1100 ppm pada penelitian lain.<sup class="r"><a href="#r3">[3]</a><a href="#r4">[4]</a></sup> Pada bayam sistem rakit apung, EC 1,5–3,0 mS/cm diuji.<sup class="r"><a href="#r1">[1]</a></sup></td></tr>
+        <tr><td>Cahaya</td><td class="mono">4–6 jam matahari/hari</td><td>Panduan populer.<sup class="r"><a href="#r18">[18]</a></sup> Amaranthus tumbuh lebih baik pada kondisi hangat.<sup class="r"><a href="#r15">[15]</a></sup></td></tr>
+        <tr><td>Suhu semai</td><td class="mono">di atas 15–17 °C</td><td>Batas minimum perkecambahan Amaranthus.<sup class="r"><a href="#r10">[10]</a></sup></td></tr>
+        <tr><td>Ganti larutan</td><td class="mono">7–10 hari</td><td>Atau saat sudah keruh.<sup class="r"><a href="#r18">[18]</a></sup></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted);font-size:15px">Angka ppm di tabel adalah hasil percobaan yang berbeda-beda. Alat ukur dan merek AB Mix mempengaruhi bacaan, jadi bandingkan dengan petunjuk di kemasan produkmu. Tanpa alat ukur, pakai dosis di kemasan dan perhatikan warna daun.</p>
+
+  <h3 style="margin-top:28px">Pemeriksaan harian</h3>
+  <ul>
+    <li>Lihat tinggi muka larutan. Tambah larutan nutrisi atau air sesuai kebutuhan, jaga agar tutup tetap di atas muka air.</li>
+    <li>Raba rockwool. Harus lembap, tidak menetes, tidak kering.</li>
+    <li>Ukur ppm dan pH bila ada alatnya. Pada penelitian bayam merah sistem sumbu, ppm dicek setiap hari.<sup class="r"><a href="#r3">[3]</a></sup></li>
+    <li>Cari lumut hijau di tutup dan di tepi kubus.</li>
+  </ul>
+
+  <h3 style="margin-top:28px">Perkiraan jadwal</h3>
+  <ol class="timeline">
+    <li><span class="day">Hari 0</span>Semai benih di kubus rockwool, taruh di tempat terang dan teduh.</li>
+    <li><span class="day">Hari 2–5</span>Benih berkecambah.<sup class="r"><a href="#r18">[18]</a></sup> Jaga kubus tetap lembap.</li>
+    <li><span class="day">Sekitar hari 7–12</span>Daun sejati 2–3 helai. Pindahkan kubus ke botol bersumbu, isi nutrisi.<sup class="r"><a href="#r8">[8]</a><a href="#r18">[18]</a></sup></li>
+    <li><span class="day">Minggu ke-2 sampai ke-3</span>Jarangkan, sisakan 1–2 bibit paling sehat per kubus.<sup class="r"><a href="#r10">[10]</a></sup></li>
+    <li><span class="day">Hari 25–35</span>Panen. Pada penelitian bayam di rockwool, panen dilakukan 35 hari setelah semai.<sup class="r"><a href="#r7">[7]</a></sup> Pada Amaranthus, daun muda dianjurkan untuk manfaat gizi yang lebih baik.<sup class="r"><a href="#r15">[15]</a></sup> Potong pangkal batang dengan gunting bersih.</li>
+  </ol>
+
+  <details>
+    <summary>Landasan ilmiah: kenapa pH dan kepekatan perlu dijaga</summary>
+    <div class="body">
+      <p>pH mempengaruhi ketersediaan dan serapan hara. Pada percobaan bayam kultur air dalam, bobot tajuk dan akar turun saat pH diturunkan dari 5,5 ke 4,0. Menaikkan kepekatan larutan tiga kali lipat pada pH 4,5 memperbaiki bobot, tetapi masih di bawah kontrol pH 5,5 dengan EC 1,4 dS/m.<sup class="r"><a href="#r2">[2]</a></sup> Di lapangan, pH air bisa jauh dari kisaran ideal, dan penelitian bayam rakit apung mencatat bahwa air dengan pH 6–10 membuat pertumbuhan tidak optimal.<sup class="r"><a href="#r1">[1]</a></sup></p>
+      <p>Pada rockwool, kepekatan larutan di zona akar berubah seiring tanaman menyerap air dan hara dalam perbandingan yang berbeda. Saat cuaca hangat, tanaman menyerap banyak air sehingga kepekatan cepat naik dan air perlu ditambah.<sup class="r"><a href="#r13">[13]</a></sup> Itu sebabnya larutan di botol sebaiknya diperiksa setiap hari, dan diganti total tiap 7–10 hari.</p>
+    </div>
+  </details>
+</section>
+
+<section id="masalah">
+  <h2>Kalau ada yang salah</h2>
+  <p>Pilih gejala yang kamu lihat.</p>
+  <div class="chips" id="chips" role="group" aria-label="Gejala"></div>
+  <div class="panel answer" id="answer" aria-live="polite"></div>
+</section>
+
+<section id="catat">
+  <h2>Lembar pengamatan</h2>
+  <p>Catat tiap kali kamu memeriksa botol. Data ini tersimpan di browser ini saja. Tekan tombol salin untuk membawanya ke laporan.</p>
+  <div class="panel">
+    <form id="logform" class="formrow">
+      <div class="field"><label for="l-botol">Botol</label>
+        <select id="l-botol"><option>A</option><option>B</option><option>C</option></select></div>
+      <div class="field"><label for="l-hari">Hari ke-</label><input id="l-hari" type="number" min="0" value="0"></div>
+      <div class="field"><label for="l-tinggi">Tinggi (cm)</label><input id="l-tinggi" type="number" min="0" step="0.1" value="0"></div>
+      <div class="field"><label for="l-daun">Jumlah daun</label><input id="l-daun" type="number" min="0" value="0"></div>
+      <div class="field"><label for="l-ph">pH</label><input id="l-ph" type="number" min="0" max="14" step="0.1" placeholder="opsional"></div>
+      <div class="field"><label for="l-ppm">ppm</label><input id="l-ppm" type="number" min="0" placeholder="opsional"></div>
+      <div class="field" style="grid-column:1/-1"><label for="l-cat">Catatan</label><input id="l-cat" type="text" placeholder="warna daun, lumut, rockwool kering, dst."></div>
+      <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" type="submit">Tambah catatan</button>
+        <button class="btn ghost" type="button" id="l-copy">Salin sebagai teks</button>
+        <button class="btn ghost" type="button" id="l-clear">Kosongkan</button>
+      </div>
+    </form>
+    <div class="tablewrap" style="margin-top:16px">
+      <table>
+        <thead><tr><th>Botol</th><th>Hari</th><th>Tinggi</th><th>Daun</th><th>pH</th><th>ppm</th><th>Catatan</th></tr></thead>
+        <tbody id="logbody"></tbody>
+      </table>
+    </div>
+    <div class="logout" id="logout" hidden></div>
+  </div>
+</section>
+
+<section id="kuis">
+  <h2>Kuis singkat</h2>
+  <p>Lima pertanyaan, jawabannya ada di halaman ini.</p>
+  <div id="quiz"></div>
+  <p class="score" id="score" aria-live="polite"></p>
+  <button class="btn ghost" id="reset" type="button">Ulangi kuis</button>
+</section>
+
+<section id="pustaka">
+  <h2>Daftar pustaka</h2>
+  <p>Label di kanan judul menunjukkan jenis sumber. Skripsi dan prosiding belum tentu melewati penelaahan sejawat seketat jurnal terakreditasi. Untuk makalah resmi, baca sumber aslinya dan kutip dari sana.</p>
+  <ol class="refs">
+    <li id="r1"><span class="n">[1]</span><span>Subandi, M., Salam, N. P., &amp; Frasetya, B. (2015). Pengaruh berbagai nilai EC terhadap pertumbuhan dan hasil bayam (<em>Amaranthus</em> sp.) pada hidroponik sistem rakit apung. <em>Istek</em>, 9(2), 136–152. <a href="https://journal.uinsgd.ac.id/index.php/istek/article/view/192">journal.uinsgd.ac.id</a><span class="t">jurnal</span></span></li>
+    <li id="r2"><span class="n">[2]</span><span>High nutrient concentrations of hydroponic solution can improve growth and nutrient uptake of spinach (<em>Spinacia oleracea</em> L.) grown in acidic nutrient solution. <em>HortScience</em>, 56(6), 2021. <a href="https://journals.ashs.org/view/journals/hortsci/56/6/article-p687.xml">journals.ashs.org</a><span class="t">jurnal</span></span></li>
+    <li id="r3"><span class="n">[3]</span><span>Aplikasi sistem hidroponik sistem sumbu pada budidaya tanaman bayam merah (<em>Amaranthus tricolor</em> L.). Prosiding Seminar Nasional Biologi, FMIPA UNP. <a href="https://semnas.biologi.fmipa.unp.ac.id/index.php/prosiding/article/download/1116/1038/4204">semnas.biologi.fmipa.unp.ac.id</a><span class="t">prosiding</span></span></li>
+    <li id="r4"><span class="n">[4]</span><span>Hidroponik wick dengan AB-Mix dan POC air cucian beras pada bayam merah. <em>Jurnal Ilmiah Mahasiswa Agrokomplek</em>, Universitas Mataram. <a href="https://journal.unram.ac.id/index.php/jima/id/article/download/11355/5627/42213">journal.unram.ac.id</a><span class="t">jurnal mahasiswa</span></span></li>
+    <li id="r5"><span class="n">[5]</span><span>AB Mix nutrient concentrations and types of growing media on the growth of green mustard (hidroponik sistem wick). Universitas Malikussaleh. <a href="https://rama.unimal.ac.id/id/eprint/7011/3/ABSTRAK.pdf">rama.unimal.ac.id</a><span class="t">abstrak skripsi</span></span></li>
+    <li id="r6"><span class="n">[6]</span><span>Saroh, M. Pengaruh jenis media tanam dan larutan AB Mix dengan konsentrasi berbeda pada pertumbuhan dan hasil produksi tanaman selada dengan hidroponik sistem sumbu. <em>Agrohita</em>. <a href="https://jurnal.um-tapsel.ac.id/index.php/agrohita/article/view/191">jurnal.um-tapsel.ac.id</a><span class="t">jurnal</span></span></li>
+    <li id="r7"><span class="n">[7]</span><span>Optimization of hydroponic water spinach and spinach production through seed quantity regulation and growing media selection (NFT, rockwool dan busa, 5/7/9 benih per lubang). Institut Pertanian Bogor. <a href="https://repository.ipb.ac.id/handle/123456789/175931?show=full">repository.ipb.ac.id</a><span class="t">skripsi</span></span></li>
+    <li id="r8"><span class="n">[8]</span><span>Budi daya sayuran hidroponik sistem sumbu memakai botol bekas melalui KKN Mahasiswa virtual. <em>Jurnal Agrokreatif</em>, IPB. <a href="https://jurnalpenyuluhan.ipb.ac.id/index.php/j-agrokreatif/article/download/32184/21779">jurnalpenyuluhan.ipb.ac.id</a><span class="t">jurnal pengabdian</span></span></li>
+    <li id="r9"><span class="n">[9]</span><span>Designing, fabrication and evaluation of a small-scale vertical hydroponic system to produce leafy vegetables (bayam; sistem sumbu, tetes, dan DWC). Memorial University. <a href="https://memorial.scholaris.ca/items/66a9e54f-7de5-4dff-8775-13130bfcba0a">memorial.scholaris.ca</a><span class="t">tesis</span></span></li>
+    <li id="r10"><span class="n">[10]</span><span>Amaranth (<em>Amaranthus</em> spp.). PlantVillage, Penn State University. <a href="https://plantvillage.psu.edu/topics/amaranth/infos">plantvillage.psu.edu</a><span class="t">panduan teknis</span></span></li>
+    <li id="r11"><span class="n">[11]</span><span>Bottle Growing System (STEM activity). U.S. Department of Energy. <a href="https://www.energy.gov/sites/prod/files/2020/04/f73/STEM_Activity_BottleGrowingSystem_8.5X11_SM.pdf">energy.gov</a><span class="t">panduan teknis</span></span></li>
+    <li id="r12"><span class="n">[12]</span><span>Deli-container growing system. Wisconsin Fast Plants. <a href="https://www.fastplants.org/pdf/grow/Deli-Container%20Growing%20System.pdf">fastplants.org</a><span class="t">panduan teknis</span></span></li>
+    <li id="r13"><span class="n">[13]</span><span>Characteristics of rockwool. CANNA UK. <a href="https://www.canna-uk.com/characteristics_of_rockwool">canna-uk.com</a><span class="t">panduan produsen</span></span></li>
+    <li id="r14"><span class="n">[14]</span><span>How to grow in rockwool. Hydrotek Hydroponics. <a href="https://www.hydrotekhydroponics.com/how-to-grow-in-rockwool">hydrotekhydroponics.com</a><span class="t">panduan praktisi</span></span></li>
+    <li id="r15"><span class="n">[15]</span><span>Modi, A. T. Growth temperature and plant age influence on nutritional quality of <em>Amaranthus</em> leaves and seed germination capacity. <em>Water SA</em>, 33(3). <a href="https://www.ajol.info/index.php/wsa/article/view/180598">ajol.info</a><span class="t">jurnal</span></span></li>
+    <li id="r16"><span class="n">[16]</span><span>Review: Teknologi hidroponik wick dan Nutrient Film Technique (NFT) untuk pertanian urban. <em>Jurnal Agrivigor</em>, Universitas Hasanuddin. <a href="https://doi.org/10.20956/ja.v16i2.49711">doi.org/10.20956/ja.v16i2.49711</a><span class="t">jurnal</span></span></li>
+    <li id="r17"><span class="n">[17]</span><span>Sistem sumbu dari bahan bekas (kangkung; botol 600–1500 ml). Prosiding Seminar Nasional Biologi, FMIPA UNP. <a href="https://semnas.biologi.fmipa.unp.ac.id/index.php/prosiding/article/download/1080/1002/4024">semnas.biologi.fmipa.unp.ac.id</a><span class="t">prosiding</span></span></li>
+    <li id="r18"><span class="n">[18]</span><span>Tanaman hidroponik: solusi berkebun modern di lahan terbatas. RRI Sorong, 19 Juni 2025. <a href="https://rri.co.id/sorong/hobi/1592849/tanaman-hidroponik-solusi-berkebun-modern-di-lahan-terbatas">rri.co.id</a><span class="t">panduan populer</span></span></li>
+    <li id="r19"><span class="n">[19]</span><span>Yield of water spinach using a hydroponic system (sistem sumbu dan NFT). <em>Agrium</em>, Universitas Muhammadiyah Sumatera Utara. <a href="https://jurnal.umsu.ac.id/index.php/agrium/article/download/26433/15287">jurnal.umsu.ac.id</a><span class="t">jurnal</span></span></li>
+  </ol>
+  <footer>Panduan ini merangkum rujukan di atas untuk keperluan edukasi. Hasil di lapangan akan berbeda menurut cuaca, merek nutrisi, dan jenis benih, jadi gunakan lembar pengamatan untuk mencatat hasil kelompokmu sendiri.</footer>
+</section>
+
+</main>
+
+<script>
+(function () {
+  function store(key, val) { try { if (val === undefined) { return JSON.parse(localStorage.getItem(key)); } localStorage.setItem(key, JSON.stringify(val)); } catch (e) { return null; } }
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* Kalkulator kebutuhan */
+  var ids = ['botol','kubus','cad','peserta','benih','vol','dosis','sumbu'];
+  function num(id) { var v = parseFloat($('c-' + id).value); return isNaN(v) || v < 0 ? 0 : v; }
+  function calc() {
+    var botol = num('botol'), kubus = num('kubus'), cad = num('cad'), peserta = num('peserta');
+    var benih = num('benih'), vol = num('vol'), dosis = num('dosis'), sumbu = num('sumbu');
+    var semai = Math.max(Math.ceil(botol * kubus * (1 + cad / 100)), Math.ceil(peserta));
+    var liter = botol * vol;
+    $('o-semai').textContent = semai;
+    $('o-benih').textContent = semai * benih;
+    $('o-larutan').textContent = liter.toFixed(1).replace('.', ',');
+    $('o-ab').textContent = (liter * dosis).toFixed(0);
+    $('o-flanel').textContent = Math.ceil(botol * sumbu);
+    $('o-botol').textContent = Math.ceil(botol);
+  }
+  ids.forEach(function (i) { $('c-' + i).addEventListener('input', calc); });
+  calc();
+
+  /* Daftar siapkan */
+  var kit = ['Botol plastik bekas 1,5 L (bersih, label dilepas)', 'Gunting tajam dan alas potong', 'Paku atau obeng untuk melubangi tutup (dipanaskan oleh fasilitator)', 'Kain flanel, dipotong selebar 2 cm', 'Kubus rockwool (potong sekitar 2–2,5 cm)', 'Benih bayam (Amaranthus)', 'Nutrisi AB Mix (larutan A dan B)', 'Kertas pH atau pH meter', 'Air bersih dan gelas ukur', 'Plastik hitam, lakban hitam, atau kertas karbon untuk pembungkus', 'Nampan semai dan penyemprot air', 'Tusuk gigi atau pensil bersih untuk menekan benih', 'Label dan spidol untuk menandai botol A, B, C', 'Sarung tangan dan lap'];
+  var kitState = store('hb-kit') || {};
+  var kitEl = $('kit');
+  kit.forEach(function (t, i) {
+    var li = document.createElement('li');
+    var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'kit' + i; cb.checked = !!kitState[i];
+    var lb = document.createElement('label'); lb.htmlFor = cb.id; lb.textContent = t;
+    cb.addEventListener('change', function () { kitState[i] = cb.checked; store('hb-kit', kitState); kitProgress(); });
+    li.appendChild(cb); li.appendChild(lb); kitEl.appendChild(li);
+  });
+  function kitProgress() {
+    var n = kit.filter(function (_, i) { return kitState[i]; }).length;
+    $('kit-bar').style.width = (n / kit.length * 100) + '%';
+    $('kit-count').textContent = n + ' dari ' + kit.length + ' siap';
+  }
+  kitProgress();
+
+  /* Langkah */
+  var phases = {
+    phaseA: [
+      ['Cuci botol dan lepas label.', 'Botol bersih mencegah bau dan jamur di larutan.'],
+      ['Potong botol sekitar 1 cm di bawah bahu botol.', 'Hasilnya dua bagian: corong atas dan tandon bawah.'],
+      ['Lubangi tutup botol di tengah, lalu pasang tutup pada corong.', 'Lubang cukup untuk satu sumbu flanel, tidak longgar.'],
+      ['Potong flanel selebar 2 cm. Panjangnya cukup menyentuh dasar tandon dan naik sekitar 3 cm ke dalam kubus.', 'Ukur dengan menaruh corong di atas tandon.'],
+      ['Basahi sumbu, lalu masukkan lewat lubang tutup.', 'Sumbu basah menyerap larutan lebih cepat.'],
+      ['Balik corong ke dalam tandon. Pastikan ujung sumbu mencapai dasar dan tutup berada di atas muka air.', 'Celah udara menjaga akar tidak terendam.'],
+      ['Bungkus bagian luar tandon dengan plastik hitam atau lakban gelap. Beri tanda A, B, atau C.', 'Gelap menghalangi cahaya ke larutan sehingga lumut sulit tumbuh.']
+    ],
+    phaseB: [
+      ['Rendam kubus rockwool dalam air pH 5,5–6,0 selama beberapa menit sampai jenuh, lalu tiriskan.', 'Rockwool baru bisa membuat air jadi basa. Ukur pH air rendaman dengan kertas pH.'],
+      ['Buat lubang kecil sekitar 0,5 cm di tengah permukaan kubus.', 'Pakai tusuk gigi atau pensil bersih.'],
+      ['Taruh 3–5 benih di tiap lubang, lalu tutup tipis dengan serat rockwool.', 'Benih bayam sangat kecil. Jangan sampai terbenam dalam.'],
+      ['Susun kubus di nampan semai, semprot sampai lembap, simpan di tempat terang dan teduh.', 'Suhu perlu di atas 15–17 °C agar benih berkecambah.'],
+      ['Semprot tiap hari agar kubus lembap, tidak menggenang. Tunggu benih berkecambah.', 'Biasanya beberapa hari. Tanam terlalu rapat dan terlalu basah menaikkan risiko rebah kecambah.']
+    ],
+    phaseC: [
+      ['Tunggu sampai bibit punya 2–3 helai daun sejati.', 'Semai yang disiapkan lebih awal dipakai untuk demo workshop.'],
+      ['Letakkan kubus bibit di corong botol sehingga menempel pada ujung sumbu.', 'Ujung sumbu harus menyentuh rockwool, kalau tidak air tidak naik.'],
+      ['Campur AB Mix dengan air bersih sesuai label produk. Ukur pH, arahkan ke 5,5–6,5.', 'Larutan A dan B tidak dicampur dalam keadaan pekat.'],
+      ['Tuang larutan ke tandon sampai sumbu terendam dan tutup tetap di atas muka air.', 'Jangan sampai larutan menyentuh dasar kubus.'],
+      ['Taruh botol di tempat yang menerima sekitar 4–6 jam sinar matahari.', 'Pastikan tutup dan celah botol tertutup rapat agar tidak jadi tempat jentik nyamuk.'],
+      ['Setelah 2–3 minggu, jarangkan: sisakan 1–2 bibit terbaik per kubus.', 'Gunting bibit yang lemah di pangkalnya, jangan dicabut.']
+    ]
+  };
+  var stepState = store('hb-steps') || {};
+  var total = 0;
+  Object.keys(phases).forEach(function (pid) {
+    var ol = $(pid);
+    phases[pid].forEach(function (s, i) {
+      var key = pid + i; total++;
+      var li = document.createElement('li');
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'st-' + key; cb.checked = !!stepState[key];
+      var lb = document.createElement('label'); lb.htmlFor = cb.id;
+      lb.appendChild(document.createTextNode(s[0]));
+      var why = document.createElement('span'); why.className = 'why'; why.textContent = s[1]; lb.appendChild(why);
+      cb.addEventListener('change', function () { stepState[key] = cb.checked; store('hb-steps', stepState); stepProgress(); });
+      li.appendChild(cb); li.appendChild(lb); ol.appendChild(li);
+    });
+  });
+  function stepProgress() {
+    var n = Object.keys(stepState).filter(function (k) { return stepState[k]; }).length;
+    $('steps-bar').style.width = (n / total * 100) + '%';
+    $('steps-count').textContent = n + ' dari ' + total + ' langkah selesai';
+  }
+  stepProgress();
+
+  /* Masalah */
+  var issues = [
+    { k: 'Benih tidak tumbuh', t: 'Benih tidak berkecambah', c: ['Kubus terlalu kering atau terlalu basah. Rockwool harus lembap, tidak menggenang.', 'Suhu terlalu rendah. Benih bayam butuh minimal sekitar 15–17 °C.', 'Benih terlalu dalam atau sudah lama. Tanam dangkal dan coba benih baru.', 'pH air rendaman rockwool terlalu tinggi. Rendam ulang dengan air pH 5,5–6,0.'] },
+    { k: 'Bibit rebah', t: 'Bibit rebah di pangkal batang', c: ['Terlalu rapat dan terlalu basah. Jarangkan dan kurangi semprotan.', 'Sirkulasi udara buruk. Pindahkan ke tempat terbuka tapi teduh dari angin kencang.', 'Gunakan benih sehat dan wadah yang bersih untuk mengurangi penyakit rebah kecambah.'] },
+    { k: 'Bibit kurus memanjang', t: 'Bibit kurus dan memanjang', c: ['Cahaya kurang. Pindahkan ke tempat dengan matahari 4–6 jam per hari.', 'Terlalu rapat. Jarangkan, sisakan 1–2 bibit per kubus.'] },
+    { k: 'Daun menguning', t: 'Daun menguning', c: ['Larutan terlalu encer atau sudah lama. Ukur ppm dan ganti larutan baru bila perlu.', 'pH di luar 5,5–6,5. Ukur dan sesuaikan.', 'Sumbu tidak menyuplai cukup. Sumbu kecil sulit memberi hara pada tanaman yang membesar. Tambah satu sumbu atau ganti dengan yang lebih tebal.'] },
+    { k: 'Rockwool kering', t: 'Rockwool kering', c: ['Sumbu tidak menyentuh larutan atau tidak menempel pada kubus. Periksa kedua ujungnya.', 'Larutan habis. Tambahkan larutan nutrisi.', 'Sumbu tersumbat kotoran. Ganti dengan flanel baru yang sudah dibasahi.'] },
+    { k: 'Lumut hijau', t: 'Lumut hijau di botol atau kubus', c: ['Cahaya mencapai larutan. Pastikan pembungkus gelap rapat, termasuk bagian leher.', 'Bersihkan botol dan ganti larutan. Cuci tangan sebelum menyentuh akar.'] },
+    { k: 'Larutan cepat habis', t: 'Larutan cepat habis', c: ['Normal saat cuaca panas, tanaman menyerap banyak air dan larutan jadi lebih pekat. Tambahkan air bersih atau larutan encer.', 'Pindahkan ke tempat yang tidak terkena panas langsung sepanjang hari.'] },
+    { k: 'Akar berbau', t: 'Akar busuk atau berbau', c: ['Tidak ada celah udara dan akar terendam. Turunkan muka larutan agar hanya sumbu yang basah.', 'Larutan sudah terlalu lama. Ganti seluruhnya dan bilas wadah.', 'Buang bagian akar yang lunak dan hitam.'] }
+  ];
+  var chips = $('chips'), ans = $('answer');
+  function show(i) {
+    var it = issues[i];
+    ans.innerHTML = '';
+    var h = document.createElement('h3'); h.textContent = it.t; ans.appendChild(h);
+    var p = document.createElement('p'); p.textContent = 'Penyebab dan yang bisa kamu lakukan:'; ans.appendChild(p);
+    var ul = document.createElement('ul');
+    it.c.forEach(function (x) { var li = document.createElement('li'); li.textContent = x; ul.appendChild(li); });
+    ans.appendChild(ul);
+    Array.prototype.forEach.call(chips.children, function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+  }
+  issues.forEach(function (it, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = it.k; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function () { show(i); });
+    chips.appendChild(b);
+  });
+  show(0);
+
+  /* Pengamatan */
+  var log = store('hb-log') || [];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function renderLog() {
+    var tb = $('logbody');
+    if (!log.length) { tb.innerHTML = '<tr><td colspan="7" style="color:var(--muted)">Belum ada catatan. Isi formulir di atas lalu tekan Tambah catatan.</td></tr>'; return; }
+    tb.innerHTML = log.map(function (r) {
+      return '<tr><td>' + esc(r.b) + '</td><td class="num">' + esc(r.h) + '</td><td class="num">' + esc(r.t) + ' cm</td><td class="num">' + esc(r.d) + '</td><td class="num">' + esc(r.ph || '-') + '</td><td class="num">' + esc(r.ppm || '-') + '</td><td>' + esc(r.c || '') + '</td></tr>';
+    }).join('');
+  }
+  renderLog();
+  $('logform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    log.push({ b: $('l-botol').value, h: $('l-hari').value, t: $('l-tinggi').value, d: $('l-daun').value, ph: $('l-ph').value, ppm: $('l-ppm').value, c: $('l-cat').value });
+    store('hb-log', log); renderLog(); $('l-cat').value = '';
+  });
+  $('l-clear').addEventListener('click', function () { log = []; store('hb-log', log); renderLog(); $('logout').hidden = true; });
+  $('l-copy').addEventListener('click', function () {
+    var txt = 'Botol\tHari\tTinggi(cm)\tDaun\tpH\tppm\tCatatan\n' + log.map(function (r) { return [r.b, r.h, r.t, r.d, r.ph, r.ppm, r.c].join('\t'); }).join('\n');
+    var out = $('logout'); out.textContent = txt; out.hidden = false;
+    try { navigator.clipboard.writeText(txt).catch(function () { sel(out); }); } catch (e) { sel(out); }
+  });
+  function sel(el) { try { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} }
+
+  /* Kuis */
+  var qs = [
+    { q: 'Apa yang menaikkan larutan nutrisi ke rockwool pada sistem sumbu?', o: ['Pompa kecil', 'Daya kapiler kain flanel', 'Gravitasi dari tandon di atas'], a: 1, f: 'Sumbu bekerja dengan aksi kapiler, tanpa listrik.' },
+    { q: 'Kenapa tandon dibungkus plastik hitam?', o: ['Agar larutan tetap hangat', 'Agar botol tidak retak', 'Agar cahaya tidak masuk dan lumut sulit tumbuh'], a: 2, f: 'Lumut tumbuh di larutan yang terkena cahaya.' },
+    { q: 'Kisaran pH larutan yang lazim untuk bayam hidroponik?', o: ['Sekitar 5,5–6,5', 'Sekitar 8–9', 'Di bawah 4'], a: 0, f: 'Pada pH 4,0 bayam kerdil dan akarnya terhambat.' },
+    { q: 'Kapan bibit di rockwool dipindahkan ke botol bersumbu?', o: ['Saat benih baru ditabur', 'Saat daun sejati sudah 2–3 helai', 'Setelah tanaman setinggi 30 cm'], a: 1, f: 'Bibit kecil dengan 2–3 daun sudah cukup kuat untuk pindah.' },
+    { q: 'Jika rockwool kering padahal larutan masih ada, apa yang pertama diperiksa?', o: ['Warna botol', 'Apakah sumbu menyentuh larutan dan menempel pada kubus', 'Jumlah benih per kubus'], a: 1, f: 'Air hanya naik bila kedua ujung sumbu terhubung.' }
+  ];
+  var qbox = $('quiz'), answered = 0, correct = 0;
+  function buildQuiz() {
+    qbox.innerHTML = ''; answered = 0; correct = 0; $('score').textContent = '';
+    qs.forEach(function (it, qi) {
+      var d = document.createElement('div'); d.className = 'q';
+      var p = document.createElement('p'); p.className = 'qt'; p.textContent = (qi + 1) + '. ' + it.q; d.appendChild(p);
+      var wrap = document.createElement('div'); wrap.className = 'opts';
+      var fb = document.createElement('div'); fb.className = 'fb';
+      it.o.forEach(function (t, oi) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'opt'; b.textContent = t;
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call(wrap.children, function (x, xi) { x.disabled = true; if (xi === it.a) x.classList.add('right'); });
+          if (oi === it.a) { correct++; fb.textContent = 'Benar. ' + it.f; } else { b.classList.add('wrong'); fb.textContent = 'Belum tepat. ' + it.f; }
+          answered++;
+          if (answered === qs.length) { $('score').textContent = 'Skor: ' + correct + ' dari ' + qs.length; }
+        });
+        wrap.appendChild(b);
+      });
+      d.appendChild(wrap); d.appendChild(fb); qbox.appendChild(d);
+    });
+  }
+  buildQuiz();
+  $('reset').addEventListener('click', buildQuiz);
+})();
+</script>
+
+</body></html>
